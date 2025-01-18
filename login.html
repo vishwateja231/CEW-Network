@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEW Network - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Navigation Bar Styling */
+       .nav-bar {
+            background-color: #3b8c67; /* Medium green background */
+            color: white;
+        }
+
+        .nav-bar a {
+            color: white;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+
+        .nav-bar .logo {
+            font-size: 24px;
+        }
+
+        .nav-bar a:hover {
+            color: #d4f8d4; /* Light green hover */
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* Input Field Styling */
+        .input-field {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 16px;
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-field:focus {
+            border-color: #2f6b48;
+            box-shadow: 0 0 8px rgba(47, 107, 72, 0.5);
+        }
+
+        /* Button Styling */
+        .btn {
+            background-color: #3b8c67; /* Medium green background */
+            color: white;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 18px;
+            width: 100%;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2f6b48; /* Dark green on hover */
+        }
+
+        /* Link Styling */
+        .link {
+            color: #2f6b48;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .link:hover {
+            color: #3b8c67;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        #qw{
+            background-color: rgb(228, 238, 199);
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-green-100 to-green-200">
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar p-6">
+        <div class="max-w-screen-xl mx-auto flex justify-between items-center">
+            <!-- Logo with link -->
+            <a href="#" class="text-white text-3xl font-bold flex items-center">
+                <img src="./assets/logo.png" alt="CEW Logo" class="mr-2 w-14 h-14 rounded-full bg-transparent p-1 border-2 border-white"> 
+                CEW Network
+            </a>
+            <ul class="flex space-x-8 text-white">
+                <li><a href="./index.html" class="hover:text-teal-300">Home</a></li>
+                <li><a href="/CEW-Network/login.html" class="hover:text-teal-300">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    </nav>
+    
+
+    <!-- Login Section -->
+    <section class="min-h-screen flex items-center justify-center px-4">
+        <div id="qw" class="card-container flex items-center bg-white p-6 rounded-lg shadow-lg space-x-6">
+
+            <!-- Left Image -->
+            <div class="hidden lg:block w-1/2">
+                <img src="./assets/login.avif" alt="Login Illustration" class="rounded-lg">
+            </div>
+
+            <!-- Login Card -->
+            <div class="card">
+                <h2 class="text-3xl font-bold text-center text-green-700 mb-6">Login to CEW Network</h2>
+
+                <form id="loginForm" class="space-y-4">
+                    <div>
+                        <label for="text" class="block text-sm font-medium">Username</label>
+                        <input type="text" id="email" name="email" placeholder="Enter your Username" class="input-field">
+                    </div>
+
+                    <div>
+                        <label for="password" class="block text-sm font-medium">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" class="input-field">
+                    </div>
+
+                    <button type="submit" class="btn">Login</button>
+
+                    <!-- <div class="flex justify-between text-sm mt-2">
+                        <a href="#" class="link">Forgot Password?</a>
+                        <a href="./register.html" class="link">Create an Account</a>
+                    </div> -->
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const adminCredentials = { email: "admin", password: "admin" };
+            const userCredentials = { email: "user", password: "user" };
+
+            if (email === adminCredentials.email && password === adminCredentials.password) {
+                window.location.href = "/CEW-Network/admin/admin_dashboard.html";
+            } else if (email === userCredentials.email && password === userCredentials.password) {
+                window.location.href = "/CEW-Network/user/user_dashboard.html";
+            } else {
+                alert("Invalid login. Please try again.");
+            }
+        });
+    </script>
+
+</body>
+
+</html>

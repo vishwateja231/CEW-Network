@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEW Network - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
+    <style>
+        /* Body Background */
+        body {
+            background-color: #f7fafc; /* Light background color for the body */
+        }
+    
+        /* Sidebar styling */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #2d3748;
+            color: white;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+    
+        #sidebar.show {
+            transform: translateX(250px);
+        }
+    
+        /* Navbar styling */
+        #navbar {
+            background-color: #2b6cb0;
+            padding: 16px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+    
+        /* Sidebar Toggle Button (Square) */
+        #toggleSidebarButton {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            background-color: #2d3748;
+            color: white;
+            border-radius: 8px;
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+        }
+    
+        #toggleSidebarButton:hover {
+            background-color: #4a5568;
+        }
+    
+        /* Sidebar links styling */
+        #sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+    
+        #sidebar li {
+            margin: 15px 0;
+        }
+    
+        #sidebar li a {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            background-color: transparent;
+            color: white;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+    
+        #sidebar li a:hover {
+            background-color: #4a5568;
+        }
+    
+        /* Logout Button Styling */
+        #navbar a[href="#logout"] {
+            color: red;
+        }
+    
+        #navbar a[href="#logout"]:hover {
+            color: darkred;
+        }
+    
+        /* Main Content Area */
+        #mainContent {
+            margin-left: 0;
+            transition: margin-left 0.3s;
+            padding: 80px 8px 8px 8px;
+            background-color: #ffffff; /* White background for the main content */
+        }
+    
+        #mainContent.sidebarOpen {
+            margin-left: 250px;
+        }
+    
+        /* Stats Cards */
+        .card {
+            background-color: #edf2f7; /* Light gray background for the cards */
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        .card:hover {
+            background-color: #e2e8f0; /* Slightly darker on hover */
+        }
+    
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+    
+        .card-value {
+            font-size: 1.875rem;
+            color: #2d3748;
+        }
+    
+        /* Small adjustments for Apply Leave sections */
+        .small-card {
+            background-color: #fef8e4; /* Light yellow background for small cards */
+            border-radius: 10px;
+            padding: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+    
+        .small-card h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+    
+        .small-card p {
+            font-size: 1rem;
+            color: #2d3748;
+        }
+    
+        /* Notification styling */
+        .notification {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    
+        .notification p {
+            margin: 0;
+        }
+    
+        /* Dropdown for Apply Leave section */
+        .dropdown-content {
+            display: none;
+            margin-top: 10px;
+            background-color: #f7fafc;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    
+        .dropdown-button:focus+.dropdown-content {
+            display: block;
+        }
+    
+        /* Calendar styling */
+        #calendar {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+    
+        /* Mini Calendar */
+        #mini-calendar {
+            width: 100%;
+            max-width: 280px;
+            margin-top: 20px;
+        }
+        #mainContent{
+            background-color: rgb(200, 215, 225);
+        }
+    </style>
+    
+    
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="text-white flex justify-between items-center">
+        <div id="logo" class="ml-12 text-2xl font-bold">CEW Network</div>
+        <div class="flex space-x-6 mr-4">
+            <a href="./user_dashboard.html" class="text-lg hover:text-gray-300">Home</a>
+            <a href="./profile.html" class="text-lg hover:text-gray-300">Profile</a>
+            <a href="/CEW-Network/login.html" class="text-lg hover:text-gray-300">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="text-center py-6 text-xl font-bold text-white">CEW Features</div>
+        <ul>
+            <li><a href="./user-features/innovative-thoughts.html">Innovative Thoughts</a></li>
+            <li><a href="./user-features/company-events.html">Company Events</a></li>
+            <li><a href="./user-features/technical-doubts.html">Technical Doubts</a></li>
+            <li><a href="./user-features/work-experience.html">Work Experience</a></li>
+            <li><a href="./user-features/property-listings.html">Property Listings</a></li>
+            <li><a href="./user-features/company-growth.html">Company Growth</a></li>
+            <li><a href="./user-features/job-referrals.html">Job Referrals</a></li>
+            <li><a href="./user-features/matrimonial.html">Matrimonial</a></li>
+            <li><a href="./user-features/birthdays.html">Birthdays</a></li>
+            <li><a href="./user-features/travel-plans.html">Travel Plans</a></li>
+        </ul>
+    </div>
+
+    <!-- Sidebar Toggle Button -->
+    <button id="toggleSidebarButton">
+        <span class="text-white">&#9776;</span>
+    </button>
+
+    <!-- Main Content Area -->
+    <div id="mainContent">
+        <h2 class="text-4xl font-bold text-teal-600 mb-6">Welcome to CEW Network</h2>
+
+        <!-- Stats Section -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="card">
+                <div class="card-title">Total Employees</div>
+                <div class="card-value">500</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Company Events</div>
+                <div class="card-value">15</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Innovative Ideas</div>
+                <div class="card-value">34</div>
+            </div>
+        </div>
+
+        <!-- Calendar and Notifications Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <!-- Calendar with Events -->
+            <div class="small-card">
+                <h3>Event Calendar</h3>
+                <p>View upcoming events and tasks.</p>
+                <div id="calendar"></div> <!-- Real Calendar Component -->
+
+                <!-- Mini Calendar -->
+                <div id="mini-calendar"></div> <!-- Small Calendar -->
+            </div>
+
+            <!-- Notifications -->
+            <div class="small-card">
+                <h3>Notifications</h3>
+                <div class="notification">
+                    <p>Upcoming team meeting on 25th Jan</p>
+                </div>
+                <div class="notification">
+                    <p>Employee of the Month announcement tomorrow</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Apply Leave Section (Dropdown) -->
+        <div class="small-card mb-8">
+            <h3>Apply Leave</h3>
+            <button class="bg-teal-500 text-white px-4 py-2 rounded mt-2 focus:outline-none dropdown-button">Apply Leave</button>
+            <div class="dropdown-content">
+                <label for="leaveStart">From: </label>
+                <input type="date" id="leaveStart" class="border p-2 rounded mb-4">
+                <label for="leaveEnd">To: </label>
+                <input type="date" id="leaveEnd" class="border p-2 rounded mb-4">
+                <label for="leaveReason">Reason: </label>
+                <textarea id="leaveReason" class="border p-2 rounded mb-4" rows="3"></textarea>
+                <button class="bg-teal-500 text-white px-4 py-2 rounded mt-2 hover:bg-teal-700" onclick="submitLeaveRequest()">Submit Leave Request</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar toggle functionality
+        const toggleSidebarButton = document.getElementById('toggleSidebarButton');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+
+        toggleSidebarButton.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+            mainContent.classList.toggle('sidebarOpen');
+        });
+
+        // Initialize FullCalendar (Event Calendar)
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                events: [
+                    {
+                        title: 'Team Meeting',
+                        start: '2025-01-25',
+                        description: 'Monthly team meeting to discuss project updates.'
+                    },
+                    {
+                        title: 'Company Event',
+                        start: '2025-01-30',
+                        description: 'Annual company-wide event to celebrate achievements.'
+                    }
+                ],
+                eventRender: function (event, element) {
+                    element.attr('title', event.description);
+                }
+            });
+
+            // Initialize Mini Calendar
+            $('#mini-calendar').fullCalendar({
+                header: {
+                    left: 'prev,next',
+                    center: 'title',
+                    right: 'today'
+                },
+                height: 'auto',
+                events: []
+            });
+        });
+
+        // Submit the leave request
+        function submitLeaveRequest() {
+            const leaveStart = document.getElementById('leaveStart').value;
+            const leaveEnd = document.getElementById('leaveEnd').value;
+            const leaveReason = document.getElementById('leaveReason').value;
+
+            if (!leaveStart || !leaveEnd || !leaveReason) {
+                alert('Please fill in all fields before submitting.');
+                return;
+            }
+
+            alert('Leave request submitted successfully! Start: ' + leaveStart + ', End: ' + leaveEnd + ', Reason: ' + leaveReason);
+        }
+    </script>
+</body>
+
+</html>

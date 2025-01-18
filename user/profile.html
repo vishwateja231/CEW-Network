@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEW Network - Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Sidebar styling */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #2d3748;
+            color: white;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        #sidebar.show {
+            transform: translateX(250px);
+        }
+
+        /* Navbar styling */
+        #navbar {
+            background-color: #2b6cb0;
+            padding: 16px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        /* Sidebar Toggle Button */
+        #toggleSidebarButton {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            background-color: #2d3748;
+            color: white;
+            border-radius: 8px;
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        #toggleSidebarButton:hover {
+            background-color: #4a5568;
+        }
+
+        /* Sidebar links styling */
+        #sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #sidebar li {
+            margin: 15px 0;
+        }
+
+        #sidebar li a {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            background-color: transparent;
+            color: white;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        #sidebar li a:hover {
+            background-color: #4a5568;
+        }
+
+        /* Profile Section */
+        .profile-container {
+            margin-left: 270px;
+            padding: 30px;
+        }
+
+        .profile-card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .profile-card h2 {
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+
+        .profile-card .profile-details,
+        .profile-card .edit-profile-form {
+            margin-top: 20px;
+        }
+
+        .profile-card .profile-details p,
+        .profile-card .edit-profile-form input,
+        .profile-card .edit-profile-form textarea {
+            font-size: 1rem;
+            color: #718096;
+        }
+
+        .profile-card .profile-details p {
+            margin-bottom: 10px;
+        }
+
+        .profile-card .edit-profile-form input,
+        .profile-card .edit-profile-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            background-color: #f9fafb;
+            font-size: 1rem;
+        }
+
+        .profile-card .edit-profile-form button {
+            background-color: #3182ce;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .profile-card .edit-profile-form button:hover {
+            background-color: #2b6cb0;
+        }
+
+        /* Profile Picture Preview */
+        #profile-picture-preview {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #2b6cb0;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 1.5rem;
+            color: #2d3748;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        /* Social Media Links */
+        .social-media-links a {
+            color: #3182ce;
+            margin-right: 20px;
+            font-size: 1.1rem;
+        }
+
+        .social-media-links a:hover {
+            color: #2b6cb0;
+        }
+
+        /* Activity Summary */
+        .activity-summary ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .activity-summary li {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: #718096;
+        }
+
+        /* Logout Button Styling */
+        #navbar a[href="#logout"] {
+            color: red;
+        }
+
+        #navbar a[href="#logout"]:hover {
+            color: darkred;
+        }
+        #ew{
+            background-color: rgb(162, 205, 205);
+        }
+        #qw{
+            background-color: rgb(162, 205, 205);
+        }
+        #er{
+            background-color: rgb(228, 235, 204);
+        }
+    </style>
+</head>
+
+<body id="ew" class="bg-gray-50">
+
+    <!-- Navbar with Home, Profile, and Logout -->
+    <nav id="navbar" class="text-white flex justify-between items-center">
+        <div id="logo" class="ml-12 text-2xl font-bold text-white">CEW Network</div>
+        <div class="flex space-x-6 mr-4">
+            <a href="./user_dashboard.html" class="text-lg hover:text-gray-300">Home</a>
+            <a href="./profile.html" class="text-lg hover:text-gray-300">Profile</a>
+            <a href="/CEW-Network/login.html" class="text-lg hover:text-gray-300">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="text-center py-6 text-xl font-bold text-white">CEW Features</div>
+        <ul>
+            <li><a href="/CEW-Network/user/user-features/innovative-thoughts.html">Innovative Thoughts</a></li>
+            <li><a href="/CEW-Network/user/user-features/company-events.html">Company Events</a></li>
+            <li><a href="/CEW-Network/user/user-features/technical-doubts.html">Technical Doubts</a></li>
+            <li><a href="/CEW-Network/user/user-features/work-experience.html">Work Experience</a></li>
+            <li><a href="/CEW-Network/user/user-features/property-listings.html">Property Listings</a></li>
+            <li><a href="/CEW-Network/user/user-features/company-growth.html">Company Growth</a></li>
+            <li><a href="/CEW-Network/user/user-features/job-referrals.html">Job Referrals</a></li>
+            <li><a href="/CEW-Network/user/user-features/matrimonial.html">Matrimonial</a></li>
+            <li><a href="/CEW-Network/user/user-features/birthdays.html">Birthdays</a></li>
+            <li><a href="/CEW-Network/user/user-features/travel-plans.html">Travel Plans</a></li>
+        </ul>
+    </div>
+
+    <!-- Sidebar Toggle Button -->
+    <button id="toggleSidebarButton">
+        <span class="text-white">&#9776;</span>
+    </button>
+
+    <!-- Profile Section -->
+    <div  class="profile-container">
+        <div  id="er" class="profile-card">
+            <h2>User Profile</h2>
+
+            <!-- Profile Picture and Name -->
+            <div class="flex items-center">
+                <div class="mr-6">
+                    <img id="profile-picture-preview" src="/CEW-Network/assets/men.avif" alt="Profile Picture" />
+                    <input type="file" id="profile-picture-upload" class="mt-2" accept="image/*" onchange="previewProfilePicture(event)" />
+                </div>
+                <div>
+                    <p><strong>Name:</strong> John Doe</p>
+                    <p><strong>Email:</strong> john.doe@example.com</p>
+                    <p><strong>Role:</strong> Employee</p>
+                    <p><strong>Joined:</strong> January 1, 2022</p>
+                </div>
+            </div>
+
+            <!-- Edit Profile Form -->
+            <div class="edit-profile-form">
+                <h2 class="section-title">Edit Profile</h2>
+                <form action="#" method="POST">
+                    <label for="name" class="text-lg">Name</label>
+                    <input type="text" id="name" name="name" value="John Doe" required />
+
+                    <label for="email" class="text-lg">Email</label>
+                    <input type="email" id="email" name="email" value="john.doe@example.com" required />
+
+                    <label for="bio" class="text-lg">Bio</label>
+                    <textarea id="bio" name="bio" rows="4" placeholder="Write a brief bio...">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
+
+                    <button type="submit">Update Profile</button>
+                </form>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="social-media-links">
+                <h2 class="section-title">Social Media Links</h2>
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                <a href="https://github.com" target="_blank">GitHub</a>
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+            </div>
+
+            <!-- Activity Summary -->
+            <div class="activity-summary">
+                <h2 class="section-title">Recent Activities</h2>
+                <ul>
+                    <li>Commented on "Company Growth Insights" post.</li>
+                    <li>Uploaded a new photo in "Company Events" section.</li>
+                    <li>Updated work experience in "Technical Doubts" forum.</li>
+                </ul>
+            </div>
+
+            <!-- Change Password Form -->
+            <div class="change-password-form mt-10">
+                <h2 class="section-title">Change Password</h2>
+                <form action="#" method="POST">
+                    <label for="current-password" class="text-lg">Current Password</label>
+                    <input type="password" id="current-password" name="current-password" required />
+
+                    <label for="new-password" class="text-lg">New Password</label>
+                    <input type="password" id="new-password" name="new-password" required />
+
+                    <label for="confirm-password" class="text-lg">Confirm New Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required />
+
+                    <button type="submit">Change Password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar toggle functionality
+        const toggleSidebarButton = document.getElementById('toggleSidebarButton');
+        const sidebar = document.getElementById('sidebar');
+
+        toggleSidebarButton.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+
+        // Profile Picture Preview
+        function previewProfilePicture(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function () {
+                const preview = document.getElementById('profile-picture-preview');
+                preview.src = reader.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+
+</html>

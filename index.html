@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to CEW Network</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .feature-card:hover {
+            transform: translateY(-10px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card img {
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover img {
+            transform: scale(1.05);
+        }
+
+        #features {
+            background-color: #f0f9f4; /* Light green background */
+            padding-top: 50px;
+        }
+
+        #features h2 {
+            color: #333;
+        }
+
+        .feature-card {
+            background-color: #d1e7d1; /* Soft green background */
+            transition: background-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background-color: #b5d6b5; /* Darker green on hover */
+        }
+
+        .hero {
+            background-color: #2f6b48; /* Dark green background */
+            color: white;
+        }
+
+        .nav-bar {
+            background-color: #3b8c67; /* Medium green background */
+            color: white;
+        }
+
+        .nav-bar a {
+            color: white;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #2f6b48; /* Dark green footer */
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar p-6">
+        <div class="max-w-screen-xl mx-auto flex justify-between items-center">
+            <!-- Logo with link -->
+            <a href="#" class="text-white text-3xl font-bold flex items-center">
+                <img src="./assets/logo.png" alt="CEW Logo" class="mr-2 w-14 h-14 rounded-full bg-transparent p-1 border-2 border-white"> 
+                CEW Network
+            </a>
+            <ul class="flex space-x-8 text-white">
+                <li><a href="#features" class="hover:text-teal-300">Features</a></li>
+                <li><a href="#about" class="hover:text-teal-300">About</a></li>
+                <li><a href="/CEW-Network/login.html" class="hover:text-teal-300">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero text-center py-24">
+        <h1 class="text-5xl font-bold">Welcome to CEW Network</h1>
+        <p class="mt-6 text-xl">A platform for corporate employees to share, collaborate, and grow together.</p>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16">
+        <div class="max-w-screen-xl mx-auto text-center">
+            <h2 class="text-3xl font-semibold mb-8">Our Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Feature 1 -->
+                <div class="feature-card p-6 rounded-lg shadow-lg">
+                    <img src="/CEW-Network/assets/shared-workspace-concept-illustration_114360-5189.avif" alt="Shared Workspace" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-4">Innovative Thoughts</h3>
+                    <p>Share creative ideas and innovative thoughts to improve the company and the work environment.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-card p-6 rounded-lg shadow-lg">
+                    <img src="/CEW-Network/assets/people-connecting-web-network-diagram-background_1017-53236.avif" alt="Company Network" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-4">Company Events</h3>
+                    <p>Stay updated on upcoming company events, share photos, and stay connected with colleagues.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-card p-6 rounded-lg shadow-lg">
+                    <img src="/CEW-Network/assets/flat-prom-background_23-2149365647.avif" alt="Promotional Event" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-4">Technical Discussions</h3>
+                    <p>Get involved in technical discussions, share insights, and solve problems together.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="feature-card p-6 rounded-lg shadow-lg">
+                    <img src="/CEW-Network/assets/teamwork-people-with-puzzle-pieces-template_24877-54942.avif" alt="Teamwork" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-4">Work Experience</h3>
+                    <p>Share your experiences, stories, and tips to help others grow in their careers.</p>
+                </div>
+                <!-- Feature 5 -->
+                <div class="feature-card p-6 rounded-lg shadow-lg">
+                    <img src="/CEW-Network/assets/ref.avif" alt="Job Interview" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-4">Employee Referrals</h3>
+                    <p>Share job opportunities and refer colleagues for positions within the company.</p>
+                </div>
+                <!-- Feature 6 -->
+                <div class="feature-card p-6 rounded-lg shadow-lg">
+                    <img src="/CEW-Network/assets/flat-hand-drawn-coworking-space_52683-54823.avif" alt="Coworking Space" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-4">Property Sales and Rentals</h3>
+                    <p>Find or list properties for sale or rent within the company community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-teal-600 text-white py-16">
+        <div class="max-w-screen-xl mx-auto text-center">
+            <h2 class="text-3xl font-semibold mb-4">About CEW Network</h2>
+            <p class="text-lg">CEW Network is an interactive web platform that empowers corporate employees to engage, collaborate, and share valuable information within the organization. It fosters community building, personal growth, and professional networking. Whether it’s about innovative thoughts, company events, or job referrals, CEW Network brings the company’s workforce together to strengthen the team and create a positive work environment.</p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-teal-600 text-white py-4">
+        <div class="max-w-screen-xl mx-auto text-center">
+            <p>&copy; 2025 CEW Network. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

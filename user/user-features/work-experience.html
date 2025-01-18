@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEW Network - Work Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Sidebar styling */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #2d3748;
+            color: white;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        #sidebar.show {
+            transform: translateX(250px);
+        }
+
+        /* Navbar styling */
+        #navbar {
+            background-color: #2b6cb0;
+            padding: 16px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        /* Sidebar Toggle Button (Square) */
+        #toggleSidebarButton {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            background-color: #2d3748;
+            color: white;
+            border-radius: 8px;
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        #toggleSidebarButton:hover {
+            background-color: #4a5568;
+        }
+
+        /* Sidebar links styling */
+        #sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #sidebar li {
+            margin: 15px 0;
+        }
+
+        #sidebar li a {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            background-color: transparent;
+            color: white;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        #sidebar li a:hover {
+            background-color: #4a5568;
+        }
+
+        /* Logout Button Styling */
+        #navbar a[href="#logout"] {
+            color: red;
+        }
+
+        #navbar a[href="#logout"]:hover {
+            color: darkred;
+        }
+
+        /* Main Content Styling */
+        .content {
+            margin-top: 80px;
+            margin-left: 270px;
+            padding: 30px;
+        }
+
+        .experience-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .experience-card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container input,
+        .form-container textarea {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            background-color: #f9fafb;
+        }
+
+        .form-container button {
+            background-color: #3182ce;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container button:hover {
+            background-color: #2b6cb0;
+        }
+        #qw{
+            background-color: #e8dcdc;
+        }
+    </style>
+</head>
+
+<body id="qw" class="bg-gray-50">
+
+    <!-- Navbar with Home, Profile, and Logout -->
+    <nav id="navbar" class="text-white flex justify-between items-center">
+        <div id="logo" class="ml-12"></div>
+        <div class="flex space-x-6 mr-4">
+            <a href="/CEW-Network/user/user_dashboard.html" class="text-lg hover:text-gray-300">Home</a>
+            <a href="/CEW-Network/user/profile.html" class="text-lg hover:text-gray-300">Profile</a>
+            <a href="/CEW-Network/login.html" class="text-lg hover:text-gray-300">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="text-center py-6 text-xl font-bold text-white">CEW Features</div>
+        <ul>
+            <li><a href="./innovative-thoughts.html">Innovative Thoughts</a></li>
+            <li><a href="./company-events.html">Company Events</a></li>
+            <li><a href="./technical-doubts.html">Technical Doubts</a></li>
+            <li><a href="./work-experience.html">Work Experience</a></li>
+            <li><a href="./property-listings.html">Property Listings</a></li>
+            <li><a href="./company-growth.html">Company Growth</a></li>
+            <li><a href="./job-referrals.html">Job Referrals</a></li>
+            <li><a href="./matrimonial.html">Matrimonial</a></li>
+            <li><a href="./birthdays.html">Birthdays</a></li>
+            <li><a href="./travel-plans.html">Travel Plans</a></li>
+        </ul>
+    </div>
+
+    <!-- Sidebar Toggle Button (Always visible) -->
+    <button id="toggleSidebarButton">
+        <span class="text-white">&#9776;</span>
+    </button>
+
+    <!-- Main Content for Work Experience -->
+    <div class="content">
+        <h2 class="text-3xl font-bold mb-6 text-gray-800">Work Experience</h2>
+        <p class="text-lg mb-8 text-gray-600">Share your professional experiences, challenges, and achievements with your colleagues.</p>
+
+        <!-- Add Work Experience Form -->
+        <div class="form-container mb-12">
+            <h3 class="text-2xl font-semibold mb-6 text-gray-700">Add Your Work Experience</h3>
+            <form action="#" method="POST">
+                <div>
+                    <label for="title" class="text-lg text-gray-700">Title of Experience</label>
+                    <input type="text" id="title" name="title" required placeholder="e.g., Software Developer at XYZ Company" />
+                </div>
+
+                <div>
+                    <label for="description" class="text-lg text-gray-700">Experience Description</label>
+                    <textarea id="description" name="description" rows="5" required placeholder="Describe your work experience, skills, and accomplishments." ></textarea>
+                </div>
+
+                <button type="submit">Add Experience</button>
+            </form>
+        </div>
+
+        <!-- Display Work Experiences -->
+        <div>
+            <h3 class="text-2xl font-semibold mb-6 text-gray-700">Previous Work Experiences</h3>
+
+            <!-- Experience Card 1 -->
+            <div class="experience-card">
+                <h4 class="text-xl font-semibold text-gray-800">Software Developer at XYZ Company</h4>
+                <p class="text-gray-600 mb-4">Worked on full-stack development, creating web applications using Node.js, React, and MongoDB. Led a small team of developers, and worked on optimizing the company’s internal tools.</p>
+                <span class="text-sm text-gray-500">Posted on: January 2024</span>
+            </div>
+
+            <!-- Experience Card 2 -->
+            <div class="experience-card">
+                <h4 class="text-xl font-semibold text-gray-800">Frontend Developer at ABC Tech</h4>
+                <p class="text-gray-600 mb-4">Developed responsive user interfaces using HTML, CSS, JavaScript, and React. Worked closely with the UX/UI team to deliver a seamless customer experience.</p>
+                <span class="text-sm text-gray-500">Posted on: December 2023</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar toggle functionality
+        const toggleSidebarButton = document.getElementById('toggleSidebarButton');
+        const sidebar = document.getElementById('sidebar');
+
+        toggleSidebarButton.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>

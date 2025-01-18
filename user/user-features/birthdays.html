@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEW Network - Birthdays</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Sidebar Styling */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #2d3748;
+            color: white;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        #sidebar.show {
+            transform: translateX(250px);
+        }
+
+        /* Navbar Styling */
+        #navbar {
+            background-color: #2b6cb0;
+            padding: 16px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        /* Sidebar Toggle Button (Square) */
+        #toggleSidebarButton {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            background-color: #2d3748;
+            color: white;
+            border-radius: 8px;
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        #toggleSidebarButton:hover {
+            background-color: #4a5568;
+        }
+
+        /* Sidebar Links Styling */
+        #sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #sidebar li {
+            margin: 15px 0;
+        }
+
+        #sidebar li a {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            background-color: transparent;
+            color: white;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        #sidebar li a:hover {
+            background-color: #4a5568;
+        }
+
+        /* Birthday Card Styling */
+        .birthday-card {
+            background-color: #f7fafc;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .birthday-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .birthday-card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .birthday-card h3 {
+            font-size: 1.5rem;
+            color: #2d3748;
+            font-weight: bold;
+        }
+
+        .birthday-card p {
+            font-size: 1.125rem;
+            color: #2d3748;
+        }
+
+        .birthday-card .wish-button {
+            background-color: #38b2ac;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .birthday-card .wish-button:hover {
+            background-color: #319795;
+        }
+
+        /* Slideshow Styling */
+        .slideshow-container {
+            position: relative;
+            width: 700px;
+            height: 400px;
+            margin: 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .active {
+            display: block;
+        }
+
+        /* Sidebar */
+        .sidebar-content {
+            margin-top: 80px;
+        }
+
+        /* Responsive Layout for Birthday Cards */
+        .birthday-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="text-white flex justify-between items-center">
+        <div id="logo" class="ml-12 text-2xl font-bold">CEW Network</div>
+        <div class="flex space-x-6 mr-4">
+            <a href="/CEW-Network/user/user_dashboard.html" class="text-lg hover:text-gray-300">Home</a>
+            <a href="/CEW-Network/user/profile.html" class="text-lg hover:text-gray-300">Profile</a>
+            <a href="/CEW-Network/login.html" class="text-lg hover:text-gray-300">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="text-center py-6 text-xl font-bold text-white">CEW Features</div>
+        <ul>
+            <li><a href="./innovative-thoughts.html">Innovative Thoughts</a></li>
+            <li><a href="./company-events.html">Company Events</a></li>
+            <li><a href="./technical-doubts.html">Technical Doubts</a></li>
+            <li><a href="./work-experience.html">Work Experience</a></li>
+            <li><a href="./property-listings.html">Property Listings</a></li>
+            <li><a href="./company-growth.html">Company Growth</a></li>
+            <li><a href="./job-referrals.html">Job Referrals</a></li>
+            <li><a href="./matrimonial.html">Matrimonial</a></li>
+            <li><a href="./birthdays.html">Birthdays</a></li>
+            <li><a href="./travel-plans.html">Travel Plans</a></li>
+        </ul>
+    </div>
+
+    <!-- Sidebar Toggle Button -->
+    <button id="toggleSidebarButton">
+        <span class="text-white">&#9776;</span>
+    </button>
+
+    <!-- Main Content -->
+    <div class="main-content ml-0 mt-20 p-6">
+
+        <!-- Previous Birthday Slideshow -->
+        <div class="slideshow-container">
+            <img src="/CEW-Network/assets/birthday.avif"  class="slide active" alt="Previous Birthday 1">
+            <img src="/CEW-Network/assets/birthday2.avif" class="slide" alt="Previous Birthday 2">
+            <img src="/CEW-Network/assets/birthday3.jpg" class="slide" alt="Previous Birthday 3">
+        </div>
+
+        <!-- Upcoming Birthdays Section -->
+        <h2 class="text-3xl font-bold text-teal-600 mb-6">Upcoming Birthday Celebrations</h2>
+
+        <!-- Birthday Cards -->
+        <div id="birthdayCards" class="birthday-cards">
+            <!-- Cards will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        // Slideshow functionality
+        let slideIndex = 0;
+
+        function showSlides() {
+            let slides = document.querySelectorAll('.slide');
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === slideIndex) {
+                    slide.classList.add('active');
+                }
+            });
+            slideIndex = (slideIndex + 1) % slides.length;
+        }
+
+        setInterval(showSlides, 3000);
+
+        // Dynamically adding birthday cards
+        const birthdayCards = [
+            {
+                name: "John Doe",
+                image: "/CEW-Network/assets/men.avif",
+                birthday: "2025-01-20"
+            },
+            {
+                name: "Jane Smith",
+                image: "/CEW-Network/assets/women1.jpg",
+                birthday: "2025-01-22"
+            },
+            {
+                name: "Alice Johnson",
+                image: "/CEW-Network/assets/men3.avif",
+                birthday: "2025-01-25"
+            }
+        ];
+
+        const birthdayCardsContainer = document.getElementById('birthdayCards');
+
+        birthdayCards.forEach(card => {
+            const cardElement = document.createElement('div');
+            cardElement.classList.add('birthday-card');
+
+            cardElement.innerHTML = `
+                <img src="${card.image}" alt="${card.name}">
+                <div>
+                    <h3>${card.name}</h3>
+                    <p>Birthday: ${card.birthday}</p>
+                    <button class="wish-button">Wish them!</button>
+                </div>
+            `;
+
+            birthdayCardsContainer.appendChild(cardElement);
+        });
+
+        // Sidebar Toggle functionality
+        const toggleSidebarButton = document.getElementById('toggleSidebarButton');
+        const sidebar = document.getElementById('sidebar');
+
+        toggleSidebarButton.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    </script>
+
+</body>
+
+</html>

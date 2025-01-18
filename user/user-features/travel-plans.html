@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEW Network - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Sidebar styling */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #2d3748;
+            color: white;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        #sidebar.show {
+            transform: translateX(250px);
+        }
+
+        /* Navbar styling */
+        #navbar {
+            background-color: #2b6cb0;
+            padding: 16px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        /* Sidebar Toggle Button (Square) */
+        #toggleSidebarButton {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            background-color: #2d3748;
+            color: white;
+            border-radius: 8px;
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        #toggleSidebarButton:hover {
+            background-color: #4a5568;
+        }
+
+        /* Sidebar links styling */
+        #sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #sidebar li {
+            margin: 15px 0;
+        }
+
+        #sidebar li a {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            background-color: transparent;
+            color: white;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        #sidebar li a:hover {
+            background-color: #4a5568;
+        }
+
+        /* Logout Button Styling */
+        #navbar a[href="#logout"] {
+            color: red;
+        }
+
+        #navbar a[href="#logout"]:hover {
+            color: darkred;
+        }
+
+        /* Travel Plans Section */
+        .travel-plans-section {
+            margin-left: 270px;
+            padding: 30px;
+        }
+
+        .travel-form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .travel-form-container h2 {
+            font-size: 2rem;
+            color: #2d3748;
+        }
+
+        .travel-form-container input,
+        .travel-form-container select,
+        .travel-form-container textarea {
+            width: 90%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            background-color: #f9fafb;
+            font-size: 1rem;
+            
+        }
+
+        .travel-form-container button {
+            background-color: #3182ce;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .travel-form-container button:hover {
+            background-color: #2b6cb0;
+        }
+
+        .travel-plans-list {
+            margin-top: 30px;
+        }
+
+        .travel-plan-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .travel-plan-card h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        .travel-plan-card p {
+            font-size: 1rem;
+            color: #718096;
+        }
+        #qw{
+            background-color: #93b3ae;
+        }
+        #we{
+            background-color: #93b3ae;
+        }
+        #er{
+            background-color: rgb(240, 241, 219);
+        }
+    </style>
+</head>
+
+<body id="we" class="bg-gray-50">
+
+    <!-- Navbar with Home, Profile, and Logout -->
+    <nav id="navbar" class="text-white flex justify-between items-center">
+        <div id="logo" class="ml-12 text-2xl font-bold text-white">CEW Network</div>
+        <div class="flex space-x-6 mr-4">
+            <a href="/CEW-Network/user/user_dashboard.html" class="text-lg hover:text-gray-300">Home</a>
+            <a href="/CEW-Network/user/profile.html" class="text-lg hover:text-gray-300">Profile</a>
+            <a href="/CEW-Network/login.html" class="text-lg hover:text-gray-300">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="text-center py-6 text-xl font-bold text-white">CEW Features</div>
+        <ul>
+            <li><a href="./innovative-thoughts.html">Innovative Thoughts</a></li>
+            <li><a href="./company-events.html">Company Events</a></li>
+            <li><a href="./technical-doubts.html">Technical Doubts</a></li>
+            <li><a href="./work-experience.html">Work Experience</a></li>
+            <li><a href="./property-listings.html">Property Listings</a></li>
+            <li><a href="./company-growth.html">Company Growth</a></li>
+            <li><a href="./job-referrals.html">Job Referrals</a></li>
+            <li><a href="./matrimonial.html">Matrimonial</a></li>
+            <li><a href="./birthdays.html">Birthdays</a></li>
+            <li><a href="./travel-plans.html">Travel Plans</a></li>
+        </ul>
+    </div>
+
+    <!-- Sidebar Toggle Button (Always visible) -->
+    <button id="toggleSidebarButton">
+        <span class="text-white">&#9776;</span>
+    </button>
+
+    <!-- Travel Plans Section -->
+    <div id="qw" class="travel-plans-section">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Travel Plans</h2>
+
+        <!-- Travel Plan Form -->
+        <div id="er" class="travel-form-container">
+            <h2>Add Your Travel Plan</h2>
+            <form action="#" method="POST">
+                <label for="destination" class="text-lg">Destination</label>
+                <input type="text" id="destination" name="destination" required placeholder="Where are you planning to travel?" />
+
+                <label for="start-date" class="text-lg">Start Date</label>
+                <input type="date" id="start-date" name="start-date" required />
+
+                <label for="end-date" class="text-lg">End Date</label>
+                <input type="date" id="end-date" name="end-date" required />
+
+                <label for="participants" class="text-lg">Participants</label>
+                <input type="text" id="participants" name="participants" required placeholder="List of participants (comma separated)" />
+
+                <label for="details" class="text-lg">Details</label>
+                <textarea id="details" name="details" rows="5" placeholder="Additional details about the trip"></textarea>
+
+                <button type="submit">Create Plan</button>
+            </form>
+        </div>
+
+        <!-- List of Travel Plans -->
+        <div class="travel-plans-list">
+            <div class="travel-plan-card">
+                <h3>Beach Trip to Goa</h3>
+                <p><strong>Dates:</strong> March 15 - March 20, 2025</p>
+                <p><strong>Participants:</strong> John, Jane, Bob</p>
+                <p><strong>Details:</strong> A relaxing beach vacation with friends to enjoy some sun, sea, and sand!</p>
+            </div>
+
+            <div class="travel-plan-card">
+                <h3>Mountain Trek to Shimla</h3>
+                <p><strong>Dates:</strong> April 10 - April 15, 2025</p>
+                <p><strong>Participants:</strong> Alice, Mark</p>
+                <p><strong>Details:</strong> An adventurous trek through the Shimla hills. Don’t forget your hiking boots!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar toggle functionality
+        const toggleSidebarButton = document.getElementById('toggleSidebarButton');
+        const sidebar = document.getElementById('sidebar');
+
+        toggleSidebarButton.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>

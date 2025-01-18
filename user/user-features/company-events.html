@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEW Network - Company Events</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Sidebar Styling */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #2d3748;
+            color: white;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        #sidebar.show {
+            transform: translateX(250px);
+        }
+
+        /* Navbar Styling */
+        #navbar {
+            background-color: #2b6cb0;
+            padding: 16px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        /* Sidebar Toggle Button (Square) */
+        #toggleSidebarButton {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            background-color: #2d3748;
+            color: white;
+            border-radius: 8px;
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        #toggleSidebarButton:hover {
+            background-color: #4a5568;
+        }
+
+        /* Sidebar Links Styling */
+        #sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #sidebar li {
+            margin: 15px 0;
+        }
+
+        #sidebar li a {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            background-color: transparent;
+            color: white;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        #sidebar li a:hover {
+            background-color: #4a5568;
+        }
+
+        /* Event Card Styling */
+        .event-card {
+            background-color: #f7fafc;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-card h3 {
+            font-size: 1.5rem;
+            color: #2d3748;
+            font-weight: bold;
+        }
+
+        .event-card p {
+            font-size: 1.125rem;
+            color: #2d3748;
+            margin-top: 10px;
+        }
+
+        .event-card .view-details-button {
+            background-color: #38b2ac;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .event-card .view-details-button:hover {
+            background-color: #319795;
+        }
+
+        /* Sidebar */
+        .sidebar-content {
+            margin-top: 80px;
+        }
+
+        /* Calendar Styling */
+        .calendar-container {
+            margin-top: 40px;
+            background-color: #f7fafc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            font-size: 0.875rem;
+        }
+
+        .calendar-cell {
+            padding: 10px;
+            text-align: center;
+            background-color: #edf2f7;
+            border-radius: 5px;
+        }
+
+        .calendar-cell.important {
+            background-color: #fbbf24;
+            color: white;
+        }
+
+        .completed-events-section {
+            margin-top: 40px;
+        }
+        #qw{
+            background-color: rgb(220, 220, 206);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="text-white flex justify-between items-center">
+        <div id="logo" class="ml-12 text-2xl font-bold">CEW Network</div>
+        <div class="flex space-x-6 mr-4">
+            <a href="/CEW-Network/user/user_dashboard.html" class="text-lg hover:text-gray-300">Home</a>
+            <a href="/CEW-Network/user/profile.html" class="text-lg hover:text-gray-300">Profile</a>
+            <a href="/CEW-Network/login.html" class="text-lg hover:text-gray-300">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="text-center py-6 text-xl font-bold text-white">CEW Features</div>
+        <ul>
+            <li><a href="./innovative-thoughts.html">Innovative Thoughts</a></li>
+            <li><a href="./company-events.html">Company Events</a></li>
+            <li><a href="./technical-doubts.html">Technical Doubts</a></li>
+            <li><a href="./work-experience.html">Work Experience</a></li>
+            <li><a href="./property-listings.html">Property Listings</a></li>
+            <li><a href="./company-growth.html">Company Growth</a></li>
+            <li><a href="./job-referrals.html">Job Referrals</a></li>
+            <li><a href="./matrimonial.html">Matrimonial</a></li>
+            <li><a href="./birthdays.html">Birthdays</a></li>
+            <li><a href="./travel-plans.html">Travel Plans</a></li>
+        </ul>
+    </div>
+
+    <!-- Sidebar Toggle Button -->
+    <button id="toggleSidebarButton">
+        <span class="text-white">&#9776;</span>
+    </button>
+
+    <!-- Main Content -->
+    <div id="qw" class="main-content ml-0 mt-20 p-6">
+
+        <!-- Upcoming Events Section -->
+        <h2 class="text-3xl font-bold text-teal-600 mb-6">Upcoming Company Events</h2>
+
+        <!-- Event Cards -->
+        <div id="eventCards" class="event-cards grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <!-- Event cards will be dynamically inserted here -->
+        </div>
+
+        <!-- Completed Events Section -->
+        <!-- Completed Events Section -->
+<div class="completed-events-section">
+    <h2 class="text-3xl font-bold text-gray-600 mb-6">Completed Events</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="event-card bg-gray-200">
+            <img src="/CEW-Network/assets/event1.avif" alt="Annual General Meeting" class="w-full h-48 object-cover rounded-md">
+            <h3>Annual General Meeting</h3>
+            <p>Event completed successfully with key discussions on company growth.</p>
+            <p><strong>Completed on:</strong> 2025-01-10</p>
+        </div>
+        <div class="event-card bg-gray-200">
+            <img src="/CEW-Network/assets/event2.avif" alt="Annual Fundraiser" class="w-full h-48 object-cover rounded-md">
+            <h3>Annual Fundraiser</h3>
+            <p>The fundraiser was a huge success, raising funds for the next quarter.</p>
+            <p><strong>Completed on:</strong> 2025-01-20</p>
+        </div>
+    </div>
+</div>
+
+
+        <!-- Calendar Section -->
+        <div class="calendar-container">
+            <h3 class="text-2xl font-bold text-teal-600 mb-4">Event Calendar</h3>
+            <div class="calendar-grid">
+                <!-- Calendar Days will be inserted here -->
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Dynamically adding event cards
+        const events = [
+            {
+                name: "Annual Company Picnic",
+                date: "2025-02-10",
+                description: "Join us for a fun-filled day of games, food, and bonding.",
+                image: "/CEW-Network/assets/event3.avif",
+                link: "./event-details.html"
+            },
+            {
+                name: "Tech Talk: AI Innovations",
+                date: "2025-02-15",
+                description: "Learn about the latest advancements in AI with industry experts.",
+                image: "/CEW-Network/assets/event4.avif",
+                link: "./event-details.html"
+            },
+            {
+                name: "Team Building Exercise",
+                date: "2025-03-05",
+                description: "Improve team collaboration through a series of fun activities.",
+                image: "/CEW-Network/assets/event5.avif",
+                link: "./event-details.html"
+            }
+        ];
+
+        const eventCardsContainer = document.getElementById('eventCards');
+        events.forEach(event => {
+            const cardElement = document.createElement('div');
+            cardElement.classList.add('event-card');
+
+            cardElement.innerHTML = `
+                <img src="${event.image}" alt="${event.name}" class="w-full h-48 object-cover rounded-md">
+                <h3>${event.name}</h3>
+                <p><strong>Date:</strong> ${event.date}</p>
+                <p>${event.description}</p>
+                <a href="${event.link}" class="view-details-button">View Details</a>
+            `;
+
+            eventCardsContainer.appendChild(cardElement);
+        });
+
+        // Calendar Section
+        const importantDates = ["2025-02-10", "2025-02-15", "2025-03-05"];
+        const calendarGrid = document.querySelector('.calendar-grid');
+        const currentMonth = new Date().getMonth();
+        const currentYear = new Date().getFullYear();
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+
+        // Empty cells for the first day
+        for (let i = 0; i < firstDayOfMonth; i++) {
+            const cell = document.createElement('div');
+            calendarGrid.appendChild(cell);
+        }
+
+        // Add days to the calendar
+        for (let day = 1; day <= daysInMonth; day++) {
+            const date = `${currentYear}-${(currentMonth + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+            const cell = document.createElement('div');
+            cell.classList.add('calendar-cell');
+            if (importantDates.includes(date)) {
+                cell.classList.add('important');
+            }
+            cell.textContent = day;
+            calendarGrid.appendChild(cell);
+        }
+
+        // Sidebar Toggle functionality
+        const toggleSidebarButton = document.getElementById('toggleSidebarButton');
+        const sidebar = document.getElementById('sidebar');
+
+        toggleSidebarButton.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    </script>
+
+</body>
+
+</html>

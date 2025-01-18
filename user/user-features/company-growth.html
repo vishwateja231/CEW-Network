@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEW Network - Company Growth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Sidebar styling */
+        #we{
+            background-color: rgb(184, 207, 183);
+        }
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #2d3748;
+            color: white;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        #sidebar.show {
+            transform: translateX(250px);
+        }
+
+        /* Navbar styling */
+        #navbar {
+            background-color: #2b6cb0;
+            padding: 16px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        /* Sidebar Toggle Button (Square) */
+        #toggleSidebarButton {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            background-color: #2d3748;
+            color: white;
+            border-radius: 8px;
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        #toggleSidebarButton:hover {
+            background-color: #4a5568;
+        }
+
+        /* Sidebar links styling */
+        #sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #sidebar li {
+            margin: 15px 0;
+        }
+
+        #sidebar li a {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            background-color: transparent;
+            color: white;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        #sidebar li a:hover {
+            background-color: #4a5568;
+        }
+
+        /* Content styling */
+        body {
+            padding-left: 0;
+            margin-top: 80px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            
+        }
+
+        /* Adjusting chart sizes and layout */
+        .chart-container {
+            margin-bottom: 24px;
+        }
+
+        canvas {
+            width: 600px !important;
+            height: 400px !important;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        #qw{
+            background-color: rgb(205, 221, 222);
+        }
+    </style>
+</head>
+
+<body id=we class="bg-gray-50">
+
+    <!-- Navbar with Home, Profile, and Logout -->
+    <nav id="navbar" class="text-white flex justify-between items-center">
+        <div id="logo" class="ml-12">CEW Network</div>
+        <div class="flex space-x-6 mr-4">
+            <a href="/CEW-Network/user/user_dashboard.html" class="text-lg hover:text-gray-300">Home</a>
+            <a href="/CEW-Network/user/profile.html" class="text-lg hover:text-gray-300">Profile</a>
+            <a href="/CEW-Network/login.html" class="text-lg hover:text-gray-300">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="text-center py-6 text-xl font-bold text-white">CEW Features</div>
+        <ul>
+            <li><a href="./innovative-thoughts.html">Innovative Thoughts</a></li>
+            <li><a href="./company-events.html">Company Events</a></li>
+            <li><a href="./technical-doubts.html">Technical Doubts</a></li>
+            <li><a href="./work-experience.html">Work Experience</a></li>
+            <li><a href="./property-listings.html">Property Listings</a></li>
+            <li><a href="./company-growth.html">Company Growth</a></li>
+            <li><a href="./job-referrals.html">Job Referrals</a></li>
+            <li><a href="./matrimonial.html">Matrimonial</a></li>
+            <li><a href="./birthdays.html">Birthdays</a></li>
+            <li><a href="./travel-plans.html">Travel Plans</a></li>
+        </ul>
+    </div>
+
+    <!-- Sidebar Toggle Button (Always visible) -->
+    <button id="toggleSidebarButton">
+        <span class="text-white">&#9776;</span>
+    </button>
+
+    <div id=qw class="pt-24 px-6 container">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Company Growth Overview</h1>
+
+        <div class="bg-white shadow-md rounded p-6 mb-8">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Daily Stock Growth</h2>
+            <div class="chart-container">
+                <canvas id="lineChart"></canvas>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded p-6 mb-8">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Key Milestones</h2>
+            <ul class="list-disc pl-6">
+                <li>2010: Company founded with a vision to innovate</li>
+                <li>2015: Achieved $10M in annual revenue</li>
+                <li>2020: Launched flagship product reaching global markets</li>
+                <li>2023: Recognized as an industry leader in technology</li>
+                <li>2024: Expanded to over 50 countries worldwide</li>
+                <li>2025: Awarded "Best Innovator" in the tech industry</li>
+            </ul>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white shadow-md rounded p-6">
+                <h2 class="text-xl font-bold text-gray-700 mb-4">Profit Trends</h2>
+                <canvas id="profitChart"></canvas>
+            </div>
+
+            <div class="bg-white shadow-md rounded p-6">
+                <h2 class="text-xl font-bold text-gray-700 mb-4">Revenue Growth</h2>
+                <canvas id="revenueChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar toggle functionality
+        const toggleSidebarButton = document.getElementById('toggleSidebarButton');
+        const sidebar = document.getElementById('sidebar');
+
+        toggleSidebarButton.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+
+        // Charts initialization
+        const ctxLine = document.getElementById('lineChart').getContext('2d');
+        new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                datasets: [{
+                    label: 'Daily Growth',
+                    data: [10, 20, 15, 30, 25],
+                    borderColor: '#4a90e2',
+                    tension: 0.3
+                }]
+            }
+        });
+
+        const profitCtx = document.getElementById('profitChart').getContext('2d');
+        new Chart(profitCtx, {
+            type: 'line',
+            data: {
+                labels: ['2018', '2019', '2020', '2021', '2022'],
+                datasets: [{
+                    label: 'Profit (in millions)',
+                    data: [2, 4, 6, 8, 10],
+                    borderColor: '#e74c3c',
+                }]
+            }
+        });
+
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(revenueCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2018', '2019', '2020', '2021', '2022'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [10, 15, 20, 25, 30],
+                    backgroundColor: '#2ecc71',
+                }]
+            }
+        });
+    </script>
+</body>
+
+</html>

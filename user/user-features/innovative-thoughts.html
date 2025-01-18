@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEW Network - Innovative Thoughts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Sidebar styling */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #2d3748;
+            color: white;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        #sidebar.show {
+            transform: translateX(250px);
+        }
+
+        /* Navbar styling */
+        #navbar {
+            background-color: #2b6cb0;
+            padding: 16px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        /* Sidebar Toggle Button (Square) */
+        #toggleSidebarButton {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            background-color: #2d3748;
+            color: white;
+            border-radius: 8px;
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        #toggleSidebarButton:hover {
+            background-color: #4a5568;
+        }
+
+        /* Sidebar links styling */
+        #sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #sidebar li {
+            margin: 15px 0;
+        }
+
+        #sidebar li a {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            background-color: transparent;
+            color: white;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        #sidebar li a:hover {
+            background-color: #4a5568;
+        }
+
+        /* Post Card Styling */
+        .post-card {
+            background-color: rgb(222, 203, 203);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 16px;
+            padding: 16px;
+        }
+
+        .post-card img {
+            border-radius: 8px;
+            width: 300px;
+            max-height: 300px;
+            object-fit: cover;
+            margin-top: 8px;
+        }
+
+        .post-card h3 {
+            color: #2b6cb0;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .post-card p {
+            margin-top: 8px;
+            color: #4a5568;
+        }
+
+        .comment-section {
+            margin-top: 16px;
+        }
+
+        .comment {
+            background-color: #edf2f7;
+            padding: 8px;
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+
+        .comment img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .like-btn, .dislike-btn {
+            cursor: pointer;
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        .like-btn:hover {
+            color: #38b2ac;
+        }
+
+        .dislike-btn:hover {
+            color: #e53e3e;
+        }
+        #qw{
+            background-color: rgb(196, 207, 215);
+        }
+        #qw{
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body id="qw" class="bg-gray-50">
+
+    <!-- Navbar with Home, Profile, and Logout -->
+    <nav id="navbar" class="text-white flex justify-between items-center">
+        <div id="logo" class="ml-12"></div>
+        <div class="flex space-x-6 mr-4">
+            <a href="/CEW-Network/user/user_dashboard.html" class="text-lg hover:text-gray-300">Home</a>
+            <a href="/CEW-Network/user/profile.html" class="text-lg hover:text-gray-300">Profile</a>
+            <a href="/CEW-Network/login.html" class="text-lg hover:text-gray-300">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="text-center py-6 text-xl font-bold text-white">CEW Features</div>
+        <ul>
+            <li><a href="./innovative-thoughts.html">Innovative Thoughts</a></li>
+            <li><a href="./company-events.html">Company Events</a></li>
+            <li><a href="./technical-doubts.html">Technical Doubts</a></li>
+            <li><a href="./work-experience.html">Work Experience</a></li>
+            <li><a href="./property-listings.html">Property Listings</a></li>
+            <li><a href="./company-growth.html">Company Growth</a></li>
+            <li><a href="./job-referrals.html">Job Referrals</a></li>
+            <li><a href="./matrimonial.html">Matrimonial</a></li>
+            <li><a href="./birthdays.html">Birthdays</a></li>
+            <li><a href="./travel-plans.html">Travel Plans</a></li>
+        </ul>
+    </div>
+
+    <!-- Sidebar Toggle Button (Always visible) -->
+    <button id="toggleSidebarButton">
+        <span class="text-white">&#9776;</span>
+    </button>
+
+    <!-- Innovative Thoughts Page Content -->
+    <div  class="p-16 ml-64">
+        <h1 class="text-3xl font-bold mb-6">Innovative Thoughts</h1>
+
+        <!-- Create Post Section -->
+        <div id="qw" class="bg-white p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-xl font-semibold mb-4">Share Your Thought</h2>
+            <input type="text" placeholder="Title of your thought" class="w-full p-4 border border-gray-300 rounded-md mb-4" />
+            <textarea class="w-full p-4 border border-gray-300 rounded-md mb-4" placeholder="What innovative thought would you like to share?" rows="4"></textarea>
+            <input type="file" class="w-full mb-4" />
+            <div class="flex justify-end mt-4">
+                <button class="bg-blue-600 text-white py-2 px-4 rounded-md">Post Thought</button>
+            </div>
+        </div>
+
+        <!-- Display Thoughts -->
+        <div class="post-card">
+            <h3>Innovative Thought Title</h3>
+            <p>This is an example of a great innovative thought. Share your own ideas to make an impact!</p>
+            <img src="/CEW-Network/assets/invt.avif" alt="Thought Image" />
+            <div class="flex items-center mt-4">
+                <span class="like-btn">&#128077;</span>
+                <span class="dislike-btn">&#128078;</span>
+                <span>15 Likes</span>
+            </div>
+            <div class="comment-section">
+                <h4 class="text-lg font-semibold">Comments</h4>
+                <div class="comment flex items-center">
+                    <img src="/CEW-Network/assets/men2.jpg" alt="User Profile Picture" />
+                    <p><strong>User 1:</strong> Great thought! Keep it up!</p>
+                </div>
+                <div class="comment flex items-center">
+                    <img src="/CEW-Network/assets/women1.jpg" alt="User Profile Picture" />
+                    <p><strong>User 2:</strong> I have a similar idea that I’d like to explore!</p>
+                </div>
+                <textarea class="w-full p-4 border border-gray-300 rounded-md mt-4" placeholder="Add a comment..." rows="3"></textarea>
+                <button class="bg-blue-600 text-white py-2 px-4 rounded-md mt-2">Post Comment</button>
+            </div>
+        </div>
+
+        <!-- Additional posts can go here -->
+
+    </div>
+
+    <script>
+        // Sidebar toggle functionality
+        const toggleSidebarButton = document.getElementById('toggleSidebarButton');
+        const sidebar = document.getElementById('sidebar');
+
+        toggleSidebarButton.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>

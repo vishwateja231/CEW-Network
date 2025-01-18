@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEW Network - Job Referrals</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #qw{
+            background-color: rgb(219, 203, 200);
+        }
+        /* Sidebar styling */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #2d3748;
+            color: white;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        #sidebar.show {
+            transform: translateX(250px);
+        }
+
+        /* Navbar styling */
+        #navbar {
+            background-color: #2b6cb0;
+            padding: 16px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        /* Sidebar Toggle Button (Square) */
+        #toggleSidebarButton {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            background-color: #2d3748;
+            color: white;
+            border-radius: 8px;
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        #toggleSidebarButton:hover {
+            background-color: #4a5568;
+        }
+
+        /* Sidebar links styling */
+        #sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #sidebar li {
+            margin: 15px 0;
+        }
+
+        #sidebar li a {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            background-color: transparent;
+            color: white;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        #sidebar li a:hover {
+            background-color: #4a5568;
+        }
+
+        /* Referral Card Styling */
+        .job-card,
+        .left-employee-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 16px;
+            padding: 16px;
+        }
+
+        .job-card h3,
+        .left-employee-card h3 {
+            color: #2b6cb0;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .job-card p,
+        .left-employee-card p {
+            margin-top: 8px;
+            color: #4a5568;
+        }
+
+        .refer-button {
+            background-color: #3182ce;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .refer-button:hover {
+            background-color: #2b6cb0;
+        }
+
+        /* Search bar styling */
+        .search-bar {
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .search-bar input {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+            width: 60%;
+        }
+
+        .search-bar button {
+            padding: 8px 16px;
+            background-color: #38a169;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #2f855a;
+        }
+
+        /* Logout Button Styling */
+        #navbar a[href="#logout"] {
+            color: red;
+        }
+
+        #navbar a[href="#logout"]:hover {
+            color: darkred;
+        }
+        
+    </style>
+</head>
+
+<body id="qw" class="bg-gray-50">
+
+    <!-- Navbar with Home, Profile, and Logout -->
+    <nav id="navbar" class="text-white flex justify-between items-center">
+        <div id="logo" class="ml-12"></div>
+        <div class="flex space-x-6 mr-4">
+            <a href="/CEW-Network/user/user_dashboard.html" class="text-lg hover:text-gray-300">Home</a>
+            <a href="/CEW-Network/user/profile.html" class="text-lg hover:text-gray-300">Profile</a>
+            <a href="/CEW-Network/login.html" class="text-lg hover:text-gray-300">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="text-center py-6 text-xl font-bold text-white">CEW Features</div>
+        <ul>
+            <li><a href="./innovative-thoughts.html">Innovative Thoughts</a></li>
+            <li><a href="./company-events.html">Company Events</a></li>
+            <li><a href="./technical-doubts.html">Technical Doubts</a></li>
+            <li><a href="./work-experience.html">Work Experience</a></li>
+            <li><a href="./property-listings.html">Property Listings</a></li>
+            <li><a href="./company-growth.html">Company Growth</a></li>
+            <li><a href="./job-referrals.html">Job Referrals</a></li>
+            <li><a href="./matrimonial.html">Matrimonial</a></li>
+            <li><a href="./birthdays.html">Birthdays</a></li>
+            <li><a href="./travel-plans.html">Travel Plans</a></li>
+        </ul>
+    </div>
+
+    <!-- Sidebar Toggle Button (Always visible) -->
+    <button id="toggleSidebarButton">
+        <span class="text-white">&#9776;</span>
+    </button>
+
+    <!-- Job Referrals Page Content -->
+    <div id="we" class="p-16 ml-64">
+        <h1 class="text-3xl font-bold mb-6">Job Referrals</h1>
+
+        <!-- Search Bar -->
+        <div class="search-bar mb-6">
+            <input type="text" placeholder="Search Job Openings..." class="p-4 border border-gray-300 rounded-md" />
+            <button class="ml-4">Search</button>
+        </div>
+
+        <!-- Vacant Positions -->
+        <h2 class="text-2xl font-bold mb-4">Vacant Positions</h2>
+        <div class="job-card">
+            <h3>Software Engineer</h3>
+            <p>We are looking for a talented Software Engineer to join our development team.</p>
+            <p><strong>Department:</strong> Engineering</p>
+            <p><strong>Location:</strong> Remote</p>
+            <button class="refer-button">Refer a Candidate</button>
+        </div>
+        <div class="job-card">
+            <h3>Product Manager</h3>
+            <p>Looking for a Product Manager to lead new product developments.</p>
+            <p><strong>Department:</strong> Product</p>
+            <p><strong>Location:</strong> New York</p>
+            <button class="refer-button">Refer a Candidate</button>
+        </div>
+
+        <!-- Employees Who Left -->
+        <h2 class="text-2xl font-bold mb-4">Employees Who Left</h2>
+        <div class="left-employee-card">
+            <h3>John Doe</h3>
+            <p><strong>Position:</strong> Senior Developer</p>
+            <p><strong>Last Day:</strong> 12/01/2025</p>
+        </div>
+        <div class="left-employee-card">
+            <h3>Jane Smith</h3>
+            <p><strong>Position:</strong> HR Manager</p>
+            <p><strong>Last Day:</strong> 15/12/2024</p>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar toggle functionality
+        const toggleSidebarButton = document.getElementById('toggleSidebarButton');
+        const sidebar = document.getElementById('sidebar');
+
+        toggleSidebarButton.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>

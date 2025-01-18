@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEW Network - Property Listings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Sidebar styling */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #2d3748;
+            color: white;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        #sidebar.show {
+            transform: translateX(250px);
+        }
+
+        /* Navbar styling */
+        #navbar {
+            background-color: #2b6cb0;
+            padding: 16px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        /* Sidebar Toggle Button (Square) */
+        #toggleSidebarButton {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            background-color: #2d3748;
+            color: white;
+            border-radius: 8px;
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        #toggleSidebarButton:hover {
+            background-color: #4a5568;
+        }
+
+        /* Sidebar links styling */
+        #sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #sidebar li {
+            margin: 15px 0;
+        }
+
+        #sidebar li a {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            background-color: transparent;
+            color: white;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        #sidebar li a:hover {
+            background-color: #4a5568;
+        }
+
+        /* Property Listings Section */
+        .property-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .property-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .property-card .info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .property-card img {
+            border-radius: 8px;
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .property-card .info h3 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .property-card .info p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .property-card button {
+            padding: 10px 15px;
+            background-color: #2b6cb0;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .property-card button:hover {
+            background-color: #2c5282;
+        }
+
+        /* Add Property Form Styling */
+        .form-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .form-container label {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .form-container input,
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-container button {
+            padding: 10px 15px;
+            background-color: #2b6cb0;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-container button:hover {
+            background-color: #2c5282;
+        }
+        #qw{
+            background-color: #b3cbb5;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Navbar with Home, Profile, and Logout -->
+    <nav id="navbar" class="text-white flex justify-between items-center">
+        <div id="logo" class="ml-12">CEW Network</div>
+        <div class="flex space-x-6 mr-4">
+            <a href="/CEW-Network/user/user_dashboard.html" class="text-lg hover:text-gray-300">Home</a>
+            <a href="/CEW-Network/user/profile.html" class="text-lg hover:text-gray-300">Profile</a>
+            <a href="/CEW-Network/login.html" class="text-lg hover:text-gray-300">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="text-center py-6 text-xl font-bold text-white">CEW Features</div>
+        <ul>
+            <li><a href="./innovative-thoughts.html">Innovative Thoughts</a></li>
+            <li><a href="./company-events.html">Company Events</a></li>
+            <li><a href="./technical-doubts.html">Technical Doubts</a></li>
+            <li><a href="./work-experience.html">Work Experience</a></li>
+            <li><a href="./property-listings.html">Property Listings</a></li>
+            <li><a href="./company-growth.html">Company Growth</a></li>
+            <li><a href="./job-referrals.html">Job Referrals</a></li>
+            <li><a href="./matrimonial.html">Matrimonial</a></li>
+            <li><a href="./birthdays.html">Birthdays</a></li>
+            <li><a href="./travel-plans.html">Travel Plans</a></li>
+        </ul>
+    </div>
+
+    <!-- Sidebar Toggle Button (Always visible) -->
+    <button id="toggleSidebarButton">
+        <span class="text-white">&#9776;</span>
+    </button>
+
+    <div id="qw" class="pt-24 px-6">
+        <!-- Property Listings Form -->
+        <div class="form-container">
+            <h2 class="text-center">Add Property Listing</h2>
+            <form action="#" method="POST">
+                <div>
+                    <label for="title">Property Title</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div>
+                    <label for="price">Price</label>
+                    <input type="number" id="price" name="price" required>
+                </div>
+                <div>
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+                <div>
+                    <label for="type">Property Type</label>
+                    <select id="type" name="type" required>
+                        <option value="">Select Property Type</option>
+                        <option value="house">House</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="office">Office</option>
+                        <option value="land">Land</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                </div>
+                <div>
+                    <label for="image">Property Image</label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
+                </div>
+                <div class="mt-6">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Property Listings Display -->
+        <div class="property-container">
+            <h2 class="text-2xl font-semibold mb-6">Available Property Listings</h2>
+
+            <!-- Property Card Example -->
+            <div class="property-card">
+                <img src="/CEW-Network/assets/building2.jpg" alt="Property Image">
+                <div class="info">
+                    <h3>Beautiful 3BHK Apartment</h3>
+                    <p>Price: ₹5,000,000</p>
+                    <p>Location: New York City</p>
+                    <p>Type: Apartment</p>
+                    <p>Description: A spacious 3BHK apartment with modern amenities, ideal for families.</p>
+                </div>
+                <button>Contact</button>
+            </div>
+
+            <div class="property-card">
+                <img src="/CEW-Network/assets/building1.jpg" alt="Property Image">
+                <div class="info">
+                    <h3>Luxury Office Space</h3>
+                    <p>Price: ₹10,000,000</p>
+                    <p>Location: San Francisco</p>
+                    <p>Type: Office</p>
+                    <p>Description: A modern office space in the heart of the city, ideal for startups.</p>
+                </div>
+                <button>Contact</button>
+            </div>
+
+            <!-- Add more property cards as needed -->
+        </div>
+    </div>
+
+    <script>
+        // Sidebar toggle functionality
+        const toggleSidebarButton = document.getElementById('toggleSidebarButton');
+        const sidebar = document.getElementById('sidebar');
+
+        toggleSidebarButton.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>
